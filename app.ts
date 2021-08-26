@@ -13,7 +13,6 @@ const server: http.Server = http.createServer(app);
 const port = 3000;
 const routes: Array<CommonRoutesConfig> = [];
 const debugLog: debug.IDebugger = debug('app');
-var bodyParser = require('body-parser')
 
 app.use(express.json());
 app.use(cors());
