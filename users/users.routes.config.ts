@@ -1,5 +1,6 @@
 import {CommonRoutesConfig} from '../common/common.routes.config';
 import express from 'express';
+import * as faker from 'faker';
 
 export class PatientsRoutes extends CommonRoutesConfig {
     constructor(app: express.Application) {
@@ -13,25 +14,12 @@ export class PatientsRoutes extends CommonRoutesConfig {
                 res.status(200).send(`List of patients`);
             })
             .post((req: express.Request, res: express.Response) => {
-                res.status(200).send(`Post to patients`);
-            });
+                let myJson = req.body;
 
-        this.app.route(`/patients/:patientId`)
-            .all((req: express.Request, res: express.Response, next: express.NextFunction) => {
+                let fn = faker.name.findName()
+                res.status(200).send(`Post to patients\t` + fn);
+                console.log(fn)
 
-                next();
-            })
-            .get((req: express.Request, res: express.Response) => {
-                res.status(200).send(`GET requested for id ${req.params.patientId}`);
-            })
-            .put((req: express.Request, res: express.Response) => {
-                res.status(200).send(`PUT requested for id ${req.params.patientId}`);
-            })
-            .patch((req: express.Request, res: express.Response) => {
-                res.status(200).send(`PATCH requested for id ${req.params.patientId}`);
-            })
-            .delete((req: express.Request, res: express.Response) => {
-                res.status(200).send(`DELETE requested for id ${req.params.patientId}`);
             });
 
         return this.app;
