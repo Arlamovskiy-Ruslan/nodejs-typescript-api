@@ -14,11 +14,14 @@ export class PatientsRoutes extends CommonRoutesConfig {
                 res.status(200).send(`List of patients`);
             })
             .post((req: express.Request, res: express.Response) => {
-                let myJson = req.body;
+                const fn = req.body.firstName;
+                if(fn == '@firstName'){
+                    let value = faker.name.findName()
+                    console.log(value)
+                }
 
-                let fn = faker.name.findName()
-                res.status(200).send(`Post to patients\t` + fn);
-                console.log(fn)
+                res.status(200).send(`Post to patients\t`);
+
 
             });
 
