@@ -5,7 +5,7 @@ import * as winston from 'winston';
 import * as expressWinston from 'express-winston';
 import cors from 'cors';
 import {CommonRoutesConfig} from './common/common.routes.config';
-import {PatientsRoutes} from './users/users.routes.config';
+import {PatientsRoutes} from './patients/patients.routes.config';
 import debug from 'debug';
 
 const app: express.Application = express();
