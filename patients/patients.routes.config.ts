@@ -13,10 +13,6 @@ export class PatientsRoutes extends CommonRoutesConfig {
 
     configureRoutes() {
 
-        const oneOf = (node: string, node1: string) => {
-            const oneOfSex = [node, node1];
-            const random = Math.floor(Math.random() * oneOfSex.length);
-        }
 
         this.app.route(`/patients`)
             .get((req: express.Request, res: express.Response) => {
@@ -25,14 +21,20 @@ export class PatientsRoutes extends CommonRoutesConfig {
             .post((req: express.Request, res: express.Response) => {
                 const firstName = req.body.firstName;
                 const sex = req.body.sex;
+                const role = req.body.role;
+
+                var old = JSON.stringify(role).replace(/@oneOf/g, '')
+                                              .replace('(', '')
+                                              .replace(')', '');
 
                 if (firstName == '@firstName' && sex == '@sex') {
                     let firstNameV = faker.name.firstName()
                     let sexV = faker.random.arrayElement(['Male', 'Female']);
 
-                    console.log(firstNameV + '\t' + sexV)
+                    console.log(firstNameV + '\n' + sexV + '\n' + old)
                     res.status(200).send('First Name:\t' + firstNameV + '\n' +
-                                                    'Sex:\t' + sexV + '\n');
+                        'Sex:\t' + sexV + '\n' +
+                        'role:\t' + old);
 
                 }
 
