@@ -13,7 +13,10 @@ export class PatientsRoutes extends CommonRoutesConfig {
 
     configureRoutes() {
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a7144435feeb8cfa2330296b39a83f4dc963958e
         this.app.route(`/patients`)
             .get((req: express.Request, res: express.Response) => {
                 res.status(200).send(`List of patients`);
@@ -28,13 +31,19 @@ export class PatientsRoutes extends CommonRoutesConfig {
                                               .replace(')', '');
 
                 if (firstName == '@firstName' && sex == '@sex') {
-                    let firstNameV = faker.name.firstName()
-                    let sexV = faker.random.arrayElement(['Male', 'Female']);
+                    let firstNameRes = faker.name.firstName()
+                    let sexRes = faker.random.arrayElement(['Male', 'Female']);
 
+<<<<<<< HEAD
                     console.log(firstNameV + '\n' + sexV + '\n' + old)
                     res.status(200).send('First Name:\t' + firstNameV + '\n' +
                         'Sex:\t' + sexV + '\n' +
                         'role:\t' + old);
+=======
+                    console.log(firstNameRes + '\t' + sexRes)
+                    res.status(200).send('First Name:\t' + firstNameRes + '\n' +
+                                                    'Sex:\t' + sexRes + '\n');
+>>>>>>> a7144435feeb8cfa2330296b39a83f4dc963958e
 
                 }
 

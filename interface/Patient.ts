@@ -3,7 +3,8 @@ declare namespace Express {
         firstName?: string;
         dateOfBirth?: string;
         dateOfMarred?: string;
-        sex?: [string , string];
+        sex?: string;
         children?: string;
+        role?: { role1: string, role2: string };
     }
 }
