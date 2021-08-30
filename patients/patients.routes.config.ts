@@ -5,8 +5,6 @@ import * as faker from 'faker';
 var map = require('underscore/cjs/map.js');
 
 export class PatientsRoutes extends CommonRoutesConfig {
-    private _: any;
-
     constructor(app: express.Application) {
         super(app, 'PatientsRoutes');
     }
@@ -22,19 +20,20 @@ export class PatientsRoutes extends CommonRoutesConfig {
                 const sexReq = req.body.sex;
                 const roleReq = req.body.role;
 
-                var old = JSON.stringify(roleReq).replace(/@oneOf/g, '')
-                                              .replace('(', '')
-                                              .replace(')', '');
+                let oldRole = JSON.stringify(roleReq).replace(/@oneOf/g, '')
+                                                     .replace('(', '')
+                                                     .replace(')', '');
+                let RoleSplit = oldRole.split(",",2)
 
-                if (firstNameReq == '@firstName' && sexReq == '@sex') {
+                if (firstNameReq == '@firstName' && sexReq == '@sex' && roleReq) {
                     let firstNameRes = faker.name.firstName()
                     let sexRes = faker.random.arrayElement(['Male', 'Female']);
+                    let roleRes = faker.random.arrayElement(RoleSplit)
 
-
-                    console.log(firstNameRes + '\n' + sexRes + '\n' + old)
+                    console.log(firstNameRes + '\n' + sexRes + '\n' + roleRes)
                     res.status(200).send('First Name:\t' + firstNameRes + '\n' +
-                        'Sex:\t' + sexRes + '\n' +
-                        'role:\t' + old);
+                                                     'Sex:\t' + sexRes + '\n' +
+                                                     'role:\t' + roleRes);
 
                 }
 
