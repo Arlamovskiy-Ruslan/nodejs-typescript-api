@@ -25,7 +25,7 @@ export class PatientsRoutes extends CommonRoutesConfig {
                                                      .replace(')', '');
                 let RoleSplit = oldRole.split(",",2)
 
-                if (firstNameReq == '@firstName' && sexReq == '@sex' && roleReq) {
+                if (firstNameReq == '@firstName' && sexReq == '@sex' && roleReq != roleReq.replace(/@oneOf.*/)) {
                     let firstNameRes = faker.name.firstName()
                     let sexRes = faker.random.arrayElement(['Male', 'Female']);
                     let roleRes = faker.random.arrayElement(RoleSplit)
