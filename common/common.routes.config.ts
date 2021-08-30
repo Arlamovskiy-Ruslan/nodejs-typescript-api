@@ -15,4 +15,5 @@ export abstract class CommonRoutesConfig {
     }
 
     abstract configureRoutes(): express.Application;
+
 }
