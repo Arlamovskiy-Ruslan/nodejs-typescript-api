@@ -13,9 +13,7 @@ export class PatientsRoutes extends CommonRoutesConfig {
 
         this.app.route(`/generator`)
             .post((req: express.Request, res: express.Response) => {
-                res.status(200).send("First Name:\t" + randomFirstName(req, res) + '\n'
-                                                +"Sex:\t" + randomSex(req, res) + '\n'
-                                                +"Role:\t" + oneOfRole(req, res) + '\n')
+                res.status(200).send(randomFirstName(req) )
             });
         return this.app;
     }
