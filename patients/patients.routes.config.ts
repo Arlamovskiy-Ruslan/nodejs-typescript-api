@@ -22,8 +22,9 @@ export class PatientsRoutes extends CommonRoutesConfig {
 
                 let oldRole = JSON.stringify(roleReq).replace(/@oneOf/g, '')
                                                      .replace('(', '')
-                                                     .replace(')', '');
-                let RoleSplit = oldRole.split(",",2)
+                                                     .replace(')', '')
+                                                     .replace(/"/g, '');
+                let RoleSplit = oldRole.split(",",2);
 
                 if (firstNameReq == '@firstName' && sexReq == '@sex' && roleReq != roleReq.replace(/@oneOf.*/)) {
                     let firstNameRes = faker.name.firstName()
