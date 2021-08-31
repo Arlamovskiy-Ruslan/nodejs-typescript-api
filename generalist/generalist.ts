@@ -3,15 +3,12 @@ import * as faker from 'faker';
 
 var map = require('underscore/cjs/map.js');
 
-export function randomFirstName(req: express.Request) {
+export function randomFirstName(key: any, value: any) {
 
-    const firstNameReq = req.body.firstName;
-    if (firstNameReq == '@firstName') {
-        let firstNameRes = faker.name.firstName()
+    if (value == '@firstName') {
+        value = faker.name.firstName()
 
-        return {
-            firstName: firstNameRes
-        }
+        console.log(value)
 
     }
 }
