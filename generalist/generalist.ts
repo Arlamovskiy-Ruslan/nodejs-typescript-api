@@ -4,12 +4,11 @@ import * as faker from 'faker';
 var map = require('underscore/cjs/map.js');
 
 export function randomFirstName(key: any, value: any) {
-
-    if (value == '@firstName') {
+    let str = JSON.stringify(value)
+    let firstName = str.toLowerCase().match(/@f.*/);
+    if (firstName) {
         value = faker.name.firstName()
-
         console.log(value)
-
     }
 }
 
