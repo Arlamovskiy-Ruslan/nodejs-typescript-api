@@ -1,6 +1,7 @@
 import {CommonRoutesConfig} from '../common/common.routes.config';
 import express from 'express';
-import {oneOfRole, randomFirstName, randomSex} from "../generalist/generalist";
+import {traverse} from "../bypassingTheTree/bypassTree";
+
 
 var map = require('underscore/cjs/map.js');
 
@@ -13,7 +14,8 @@ export class PatientsRoutes extends CommonRoutesConfig {
 
         this.app.route(`/generator`)
             .post((req: express.Request, res: express.Response) => {
-                res.status(200).send(randomFirstName(req) )
+                const fx = (key:any, value:any, node:any) => console.log(key, value)
+                res.status(200).send('Response:\t' + traverse(req.body, fx))
             });
         return this.app;
     }
