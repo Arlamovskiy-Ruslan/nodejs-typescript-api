@@ -39,11 +39,11 @@ function process(key, value) {
     console.log(key + " : " + value);
 }
 
-function traverse(obj, func) {
-    for (var i in obj) {
-        func.apply(this, [i, obj[i]]);
-        if (obj[i] !== null && typeof (obj[i]) == "object") {
-            traverse(obj[i], func);
+function traverse(node, func) {
+    for (var prop in node) {
+        func(prop, node[prop]);
+        if (node[prop] !== null && typeof (node[prop]) == "object") {
+            traverse(node[prop], func);
         }
     }
 }
