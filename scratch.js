@@ -36,14 +36,11 @@ function traverse(node, func) {
 }
 
 // const fx = (key, value) => console.log(key, value)
-const fx = (key, value) => {
-    if (value === "@Adam"){
-        console.log("SSSS")
-    }
-    if (value === "@male"){
-        console.log("SS")
-    }
+const fx = (key, value) => {console.log(key, value)
 }
+
+
+
 
 traverse(o, fx)
 
