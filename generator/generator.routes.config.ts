@@ -6,7 +6,7 @@ export class PatientsRoutes {
 
     configureRoutes(app: express.Application) {
 
-        app.route(`/generator`)
+        app.route(`/generate`)
             .post((req: express.Request, res: express.Response) => {
                 res.status(200).send(traverse(req.body, translator))
             });
