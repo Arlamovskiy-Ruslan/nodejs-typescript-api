@@ -1,42 +1,39 @@
 import express from 'express';
 import * as faker from 'faker';
 
-var map = require('underscore/cjs/map.js');
+export function translator(key: any, value: any){
+    randomFirstName(key, value)
+    oneOfRole(key, value)
+    randomSex(key, value)
+}
 
-export function randomFirstName(key: any, value: any) {
-    let str = JSON.stringify(value)
-    let firstName = str.toLowerCase().match(/@f.*/);
+
+function randomFirstName(key: any, value: any) {
+    let firstName = JSON.stringify(value).toLowerCase().match(/@f.*/);
     if (firstName) {
         value = faker.name.firstName()
         console.log(value)
     }
 }
 
-export function randomSex(req: express.Request, res: express.Response) {
-    const sexReq = req.body.sex;
-    if (sexReq == '@sex') {
-        let sexRes = faker.random.arrayElement(['Male', 'Female']);
-        return sexRes;
+function randomSex(key: any, value: any) {
+    let sex = JSON.stringify(value).toLowerCase().match(/@s.*/);
+    if (sex) {
+        value = faker.random.arrayElement(['Male', 'Female']);
+        console.log(value)
     }
 }
 
-export function oneOfRole(req: express.Request, res: express.Response) {
-    const roleReq = req.body.role;
+function oneOfRole(key: any, value: any) {
+    let role = JSON.stringify(value).toLowerCase().match(/@s.*/);
 
-    let oldRole = JSON.stringify(roleReq).replace(/@oneOf/g, '')
-        .replace('(', '')
-        .replace(')', '')
-        .replace(/"/g, '');
-    let roleSplit = oldRole.split(",", 2);
-
-    if (roleReq != roleReq.replace(/@oneOf.*/)) {
-        let roleRes = faker.random.arrayElement(roleSplit)
-
-        return roleRes
+    if (role) {
+        value = faker.random.arrayElement(role)
+        console.log(value)
     }
 }
 
-export function rangeChildren(req: express.Request, res: express.Response) {
+function rangeChildren(req: express.Request, res: express.Response) {
     const children = req.body.children;
 
     let oldChildren = JSON.stringify(children).replace(/@range/g, '')
