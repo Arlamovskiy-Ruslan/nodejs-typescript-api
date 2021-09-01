@@ -10,7 +10,6 @@ const port = 3000;
 app.use(express.json());
 app.use(cors());
 
-
 server.listen(port, () => {
     new PatientsRoutes().configureRoutes(app)
     console.log(`Server running at http://localhost:${port}`);
