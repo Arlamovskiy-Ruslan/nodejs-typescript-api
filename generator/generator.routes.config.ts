@@ -1,21 +1,16 @@
-import {CommonRoutesConfig} from '../common/common.routes.config';
 import express from 'express';
 import {traverse} from "../bypassingTheTree/bypassTree";
-import {randomFirstName} from "../generalist/generalist";
+import {translator} from "../generalist/generalist";
 
-export class PatientsRoutes extends CommonRoutesConfig {
-    constructor(app: express.Application) {
-        super(app, 'PatientsRoutes');
-    }
+export class PatientsRoutes {
 
-    configureRoutes() {
+    configureRoutes(app: express.Application) {
 
-        this.app.route(`/generator`)
+        app.route(`/generator`)
             .post((req: express.Request, res: express.Response) => {
-                const fx = (key:any, value:any) => console.log(randomFirstName(key, value))
-                res.status(200).send(traverse(req.body, fx))
+                res.status(200).send(traverse(req.body, translator))
             });
-        return this.app;
+        return app;
         
     }
 }
