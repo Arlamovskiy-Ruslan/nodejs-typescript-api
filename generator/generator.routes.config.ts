@@ -1,6 +1,5 @@
 import express from 'express';
 import {traverse} from "../bypassingTheTree/bypassTree";
-import {translate} from "../generalist/generalist";
 import {transform} from "../translate/transform/transform";
 
 export class PatientsRoutes {
@@ -12,6 +11,6 @@ export class PatientsRoutes {
                 res.status(200).send(traverse(req.body, transform))
             });
         return app;
-        
+
     }
 }
