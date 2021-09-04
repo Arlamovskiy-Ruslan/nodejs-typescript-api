@@ -3,7 +3,7 @@ import {binding, given, then, when} from 'cucumber-tsflow';
 const {assert} = require('chai');
 
 @binding()
-export class BankAccountSteps {
+export class Test {
     private accountBalance: number = 0;
     private obj = {name: "@firstName"};
 
